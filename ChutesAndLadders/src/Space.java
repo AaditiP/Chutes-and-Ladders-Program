@@ -1,11 +1,8 @@
 public class Space {
 	//instance variables
-	private boolean isChute, isLadder, isNormal;
+	public boolean isChute, isLadder, isNormal;
 	
 	//constructors
-	public Space() {
-		isNormal=true;
-	}
 	
 	public Space(int type) {
 		if (type==1) {
@@ -39,6 +36,10 @@ public class Space {
 		}else {
 			return false;
 		}
-	}
+    }
+    
+    public void printBoard() {
+        
+    }
 	
 }
