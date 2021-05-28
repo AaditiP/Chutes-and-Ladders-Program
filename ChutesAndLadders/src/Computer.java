@@ -5,16 +5,16 @@ public class Computer extends Board implements Player{
 	private String name="Randy Melvin Bartholomew the Third";
 	private int rowIndex=9;
 	private int colIndex=0;
-	private int[][] board;
+	private Space[][] board;
 	
 	//constructor
 	public Computer() {
-//		board = super.getBoard();
+		board = super.getBoard();
 	}
 		
 	//methods
 	public void turn() {
-			
+		
 	}
 	
 	//returns whether or not player is in even row 
