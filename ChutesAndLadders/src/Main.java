@@ -1,10 +1,11 @@
- import javax.swing.*;
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
 class Main{
   public static void main(String args[]) {
-    
+    Board board = new Board();
+    board.goesFirst();
   }
   
 }
