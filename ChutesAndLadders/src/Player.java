@@ -9,5 +9,5 @@ public interface Player {
 	public int getColumnIndex();
 	
 	//return true if even number 
-	public boolean isEven();
+	public boolean isEven(int rI);
 }
