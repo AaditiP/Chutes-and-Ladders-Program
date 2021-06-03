@@ -1,6 +1,7 @@
 public class Space {
 	//instance variables
 	public boolean isChute, isLadder, isNormal;
+	public int type;
 	
 	//constructors
 	
@@ -9,14 +10,17 @@ public class Space {
 			isNormal=false;
 			isChute=false;
 			isLadder=true;
+			type=1;
 		}else if (type==2) {
 			isNormal=false;
 			isChute=true;
 			isLadder=false;
+			type=2;
 		}else {
 			isNormal=true;
 			isChute=false;
 			isLadder=false;
+			type=0;
 		}
 	}
 	
@@ -38,8 +42,8 @@ public class Space {
 		}
     }
     
-    public void printBoard() {
-        
-    }
+   public int getType() {
+	   return type;
+   }
 	
 }

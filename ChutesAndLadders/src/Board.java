@@ -7,8 +7,9 @@ class Board {
     void origBoard() {
         for (int a = 0; a < board.length; a++) {
             for (int b = 0; b < board[a].length; b++) {
-                Space normal = new Space(0);
-                board[a][b] = normal;
+//                Space normal = new Space(0);
+//                board[a][b] = normal;
+            	board[a][b] = new Space(0);
             }
         }
     }
@@ -57,7 +58,7 @@ class Board {
         while (y < 5) {
             int xCoord = (int)(Math.random() * 10);
             int yCoord = (int)(Math.random() * 10);
-            if (board[xCoord][yCoord].isLadder) {
+            if (board[xCoord][yCoord].isLadder()) {
                 y = y;
             }
             else {
@@ -105,7 +106,17 @@ class Board {
     
     /*Note: tried to add this to avoid null pointer exception*/
     //returns Space at give indexes
-    public Space getValue(int row, int col) {
-    	return board[row][col];
+//    public Space getValue(int row, int col) {
+//    	return board[row][col];
+//    }
+    
+    public int getValue(int row, int col) {
+    	if (board[row][col].isChute()) {
+    		return 2;
+    	}else if (board[row][col].isLadder()) {
+    		return 1;
+    	}else {
+    		return 0;
+    	}
     }
 }

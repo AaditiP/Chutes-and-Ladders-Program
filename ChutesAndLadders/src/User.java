@@ -5,7 +5,7 @@ public class User extends Board implements Player {
 	private String name;
 	private int rowIndex=9;
 	private int colIndex=0;
-	private Space[][] board;
+	private Space[][] boardArr;
 	int numSpaces=0;
 	boolean win=false;
 	//Note to Annika: null pointer exception because array gets set to null here instead of Space objects 
@@ -13,12 +13,31 @@ public class User extends Board implements Player {
 	//constructor
 	public User (String n) {
 //		board = super.getBoard();
+//		this.setBoard();
 		name = n;
 	}
 	
-	//return board
-	public Space[][] getBoard() {
-		return board;
+//	//return board
+//	public Space[][] getBoard() {
+//		return board;
+//	}
+	
+	public void setBoard() {
+		
+		for (int i=0; i<10; i++) {
+			
+			for (int j=0; i<10; j++) {
+//				Space spa = new Space(0);
+				if(super.getValue(i, j)==2) {
+					boardArr[i][j] = new Space(2);
+				}else if(super.getValue(i, j)==1) {
+					boardArr[i][j] = new Space(1);
+				}else {
+					boardArr[i][j] = new Space(0);
+				}
+			}
+			
+		}
 	}
 	
 	//play turns
@@ -60,11 +79,11 @@ public class User extends Board implements Player {
 //				this.ladders();
 //			}
 			
-			if (super.getValue(rowIndex, colIndex).isChute()) {
+			if (super.getValue(rowIndex, colIndex)==2) {
 				//go back
 				this.chutes();
 			
-			}else if (super.getValue(rowIndex, colIndex).isLadder()) {
+			}else if (super.getValue(rowIndex, colIndex)==1) {
 				//go forward
 				this.ladders();
 			}
