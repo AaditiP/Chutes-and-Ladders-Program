@@ -7,10 +7,12 @@ public class User extends Board implements Player {
 	private int colIndex=0;
 	private Space[][] board;
 	int numSpaces=0;
+	boolean win=false;
+	//Note to Annika: null pointer exception because array gets set to null here instead of Space objects 
 	
 	//constructor
 	public User (String n) {
-		board = super.getBoard();
+//		board = super.getBoard();
 		name = n;
 	}
 	
@@ -21,10 +23,10 @@ public class User extends Board implements Player {
 	
 	//play turns
 	public void turn() {
-		int moveNum = (int)(Math.random()*5) + 1;
+		int moveNum = (int)(Math.random()*6) + 1;
 		System.out.println("Dice rolled: " + moveNum);
 		
-		boolean isEven = this.isEven();
+		boolean isEven = this.isEven(rowIndex);
 		
 		/*moves user to the left, right, up, or down depending on
 		if user is in even row, or at end of row*/
@@ -48,11 +50,21 @@ public class User extends Board implements Player {
 		
 		//test for chutes and ladders and winner
 		if (colIndex != 0 && rowIndex !=0) {
-			if (board[rowIndex][colIndex].isChute()) {
+			//Note: tried to change this if statement to use getValue method 
+//			if (board[rowIndex][colIndex].isChute()) {
+//				//go back
+//				this.chutes();
+//			
+//			}else if (board[rowIndex][colIndex].isLadder()) {
+//				//go forward
+//				this.ladders();
+//			}
+			
+			if (super.getValue(rowIndex, colIndex).isChute()) {
 				//go back
 				this.chutes();
 			
-			}else if (board[rowIndex][colIndex].isLadder()) {
+			}else if (super.getValue(rowIndex, colIndex).isLadder()) {
 				//go forward
 				this.ladders();
 			}
@@ -60,13 +72,14 @@ public class User extends Board implements Player {
 			System.out.println(name + " is now at " + rowIndex + " " + colIndex);
 		}else {
 			System.out.println(name + " has won.");
+			win=true;
 		}
 		
 	}
 	
 	//returns whether or not player is in even row 
-	public boolean isEven() {
-		if (rowIndex%2 == 0) {
+	public boolean isEven(int rIndex) {
+		if (rIndex%2 == 0) {
 			return true;
 		}else {
 			return false;
@@ -105,5 +118,9 @@ public class User extends Board implements Player {
 	//return column
 	public int getColumnIndex() {
 		return colIndex;
+	}
+	
+	public boolean getWin() {
+		return win;
 	}
 }
