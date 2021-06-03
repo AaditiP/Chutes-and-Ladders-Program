@@ -14,8 +14,9 @@ public class Computer extends User{
 	}
 		
 	//methods
+	//Later problem: how to copy array in here 
 	public void setBoard() {
-		board = super.getBoard();
+//		board = super.setBoard();
 	}
 	
 	//play turns

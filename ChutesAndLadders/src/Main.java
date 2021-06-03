@@ -34,11 +34,12 @@ class Main{
         System.out.println();
         
         
-//        //test if board is what we expect
-//        board.testPrints();
+        //test if board is what we expect
+        board.testPrints();
         
         //play turns 
         int k=goesFirst;
+//        use.setBoard();
         
         while (use.getWin()==false && comp.getWin()==false) {
         	
