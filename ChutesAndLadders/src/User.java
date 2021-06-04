@@ -69,32 +69,40 @@ public class User  implements Player {
 		
 		
 		//test for chutes and ladders and winner
-		if (colIndex != 0 && rowIndex !=0) {
-			//Note: tried to change this if statement to use getValue method 
-//			if (board[rowIndex][colIndex].isChute()) {
+//		if (colIndex != 0 && rowIndex !=0) {
+//			//Note: tried to change this if statement to use getValue method 
+////			if (board[rowIndex][colIndex].isChute()) {
+////				//go back
+////				this.chutes();
+////			
+////			}else if (board[rowIndex][colIndex].isLadder()) {
+////				//go forward
+////				this.ladders();
+////			}
+//			
+//			if (b.getValue(rowIndex, colIndex)==2) {
 //				//go back
 //				this.chutes();
 //			
-//			}else if (board[rowIndex][colIndex].isLadder()) {
+//			}else if (b.getValue(rowIndex, colIndex)==1) {
 //				//go forward
 //				this.ladders();
 //			}
-			
-			if (b.getValue(rowIndex, colIndex)==2) {
-				//go back
-				this.chutes();
-			
-			}else if (b.getValue(rowIndex, colIndex)==1) {
-				//go forward
-				this.ladders();
-			}
-			
-			System.out.println(name + " is now at " + rowIndex + " " + colIndex);
-		}else {
-			System.out.println(name + " has won.");
-			win=true;
-		}
+//			
+//			System.out.println(name + " is now at " + rowIndex + " " + colIndex);
+//		}else {
+//			System.out.println(name + " has won.");
+//			win=true;
+//		}
 		
+	}
+	
+	public void playChutesOrLadder(int type) {
+		if (type==2) {
+			this.chutes();
+		}else if (type==1) {
+			this.ladders();
+		}
 	}
 	
 	//returns whether or not player is in even row 

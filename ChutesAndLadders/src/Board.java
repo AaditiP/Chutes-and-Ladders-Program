@@ -119,4 +119,15 @@ class Board {
     		return 0;
     	}
     }
+    
+    //return whether the Space at [r][c] is chute, ladder, or nothing
+    public int spaceType(int r, int c) {
+    	if (board[r][c].isChute()) {
+    		return 2;
+    	}else if (board[r][c].isLadder()) {
+    		return 1;
+    	}else {
+    		return 0;
+    	}
+    }
 }
