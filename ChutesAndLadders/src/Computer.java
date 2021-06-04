@@ -5,7 +5,7 @@ public class Computer extends User{
 	private String name="Randy Melvin Bartholomew the Third";
 	private int rowIndex=9;
 	private int colIndex=0;
-	private Space[][] board;
+//	private Space[][] board;
 	boolean win=false;
 	
 	//constructor

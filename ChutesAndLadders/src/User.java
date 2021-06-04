@@ -1,13 +1,14 @@
 
-public class User extends Board implements Player {
+public class User  implements Player {
 	
 	//instance variables
 	private String name;
 	private int rowIndex=9;
 	private int colIndex=0;
-	private Space[][] boardArr;
+//	private Space[][] boardArr;
 	int numSpaces=0;
 	boolean win=false;
+	Board b = new Board();
 	//Note to Annika: null pointer exception because array gets set to null here instead of Space objects 
 	
 	//constructor
@@ -22,23 +23,23 @@ public class User extends Board implements Player {
 //		return board;
 //	}
 	
-	public void setBoard() {
-		
-		for (int i=0; i<10; i++) {
-			
-			for (int j=0; i<10; j++) {
-//				Space spa = new Space(0);
-				if(super.getValue(i, j)==2) {
-					boardArr[i][j] = new Space(2);
-				}else if(super.getValue(i, j)==1) {
-					boardArr[i][j] = new Space(1);
-				}else {
-					boardArr[i][j] = new Space(0);
-				}
-			}
-			
-		}
-	}
+//	public void setBoard() {
+//		
+//		for (int i=0; i<10; i++) {
+//			
+//			for (int j=0; i<10; j++) {
+////				Space spa = new Space(0);
+//				if(super.getValue(i, j)==2) {
+//					boardArr[i][j] = new Space(2);
+//				}else if(super.getValue(i, j)==1) {
+//					boardArr[i][j] = new Space(1);
+//				}else {
+//					boardArr[i][j] = new Space(0);
+//				}
+//			}
+//			
+//		}
+//	}
 	
 	//play turns
 	public void turn() {
@@ -68,32 +69,40 @@ public class User extends Board implements Player {
 		
 		
 		//test for chutes and ladders and winner
-		if (colIndex != 0 && rowIndex !=0) {
-			//Note: tried to change this if statement to use getValue method 
-//			if (board[rowIndex][colIndex].isChute()) {
+//		if (colIndex != 0 && rowIndex !=0) {
+//			//Note: tried to change this if statement to use getValue method 
+////			if (board[rowIndex][colIndex].isChute()) {
+////				//go back
+////				this.chutes();
+////			
+////			}else if (board[rowIndex][colIndex].isLadder()) {
+////				//go forward
+////				this.ladders();
+////			}
+//			
+//			if (b.getValue(rowIndex, colIndex)==2) {
 //				//go back
 //				this.chutes();
 //			
-//			}else if (board[rowIndex][colIndex].isLadder()) {
+//			}else if (b.getValue(rowIndex, colIndex)==1) {
 //				//go forward
 //				this.ladders();
 //			}
-			
-			if (super.getValue(rowIndex, colIndex)==2) {
-				//go back
-				this.chutes();
-			
-			}else if (super.getValue(rowIndex, colIndex)==1) {
-				//go forward
-				this.ladders();
-			}
-			
-			System.out.println(name + " is now at " + rowIndex + " " + colIndex);
-		}else {
-			System.out.println(name + " has won.");
-			win=true;
-		}
+//			
+//			System.out.println(name + " is now at " + rowIndex + " " + colIndex);
+//		}else {
+//			System.out.println(name + " has won.");
+//			win=true;
+//		}
 		
+	}
+	
+	public void playChutesOrLadder(int type) {
+		if (type==2) {
+			this.chutes();
+		}else if (type==1) {
+			this.ladders();
+		}
 	}
 	
 	//returns whether or not player is in even row 
