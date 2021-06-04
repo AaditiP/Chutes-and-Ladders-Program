@@ -43,7 +43,7 @@ class Board {
 
     // 1 = ladder, 2 = chutes, anything else = normal
     void spaceSet() {
-    	
+    	//Idea for later: change Math.random() parameters to avoid if statements
         //Sets ladders
         for (int x = 0; x < 5; x++) {
             int xCoord = (int)(Math.random() * 10);
