@@ -6,12 +6,13 @@ class Main{
 		Board b = new Board();
 		Scanner scn = new Scanner(System.in);
 		String name;
-		int goesFirst, rIndex, cIndex, type;
+		int goesFirst, rIndexUse, cIndexUse, rIndexComp, cIndexComp, type;
 
         //user interface
         System.out.println("Hello and welcome to Chutes and Ladders. "
         		+ "\nYou will be playing against the computer, named Randy Melvin Bartholomew the Third. "
         		+ "\n*Insert rules here* ");
+        //TODO: add rules
         System.out.println();
         
         //set board
@@ -41,31 +42,60 @@ class Main{
         int k=goesFirst;
 //        use.setBoard();
         
-        //Note for future: maybe use rIndex and cIndex !=0  in while loop 
-        while (use.getWin()==false && comp.getWin()==false) {
+        //TODO: maybe use rIndex and cIndex !=0  in while loop 
+//        (use.getRowIndex()!=0 && use.getColumnIndex()!=0) || (comp.getRowIndex()!=0 && comp.getColumnIndex()!=0)
+        
+        while (use.getWin()==false && comp.getWin()==false){
         	
         	//computer goes 
         	if (k%2==0) {
         		comp.turn();
+//        		System.out.println(comp.getName() + " is at " + comp.getRowIndex() + " " + comp.getColumnIndex());
+        		
+        		rIndexComp = comp.getRowIndex();
+        		cIndexComp = comp.getColumnIndex();
+        		
+        	
+        		
+        		if ((rIndexComp==0 && cIndexComp==0) || rIndexComp<0) {
+        			continue;
+        			//TODO: check if won
+        		}else {
+        			System.out.println(comp.getName() + " is at " + comp.getRowIndex() + " " + comp.getColumnIndex());
+        			type = b.spaceType(rIndexComp, cIndexComp);
+        			comp.playChutesOrLadder(type);
+        		}
+        		
+//        		System.out.println(comp.getName() + " is at " + comp.getRowIndex() + " " + comp.getColumnIndex());
         		
         	//user goes	
         	}else {
         		use.turn();
-        		rIndex = use.getRowIndex();
-        		cIndex = use.getColumnIndex();
+//        		System.out.println(use.getName() + " is at " + use.getRowIndex() + " " + use.getColumnIndex());
         		
-        		if (rIndex!=0 && cIndex!=0) {
-        			type = b.spaceType(rIndex, cIndex);
+        		rIndexUse = use.getRowIndex();
+        		cIndexUse = use.getColumnIndex();
+        		
+        		if ((rIndexUse==0 && cIndexUse==0) || rIndexUse<0){
+        			continue;
         			//TODO: check if won
         		}else {
-        			System.out.println("You won!");
-        			break;
+        			System.out.println(use.getName() + " is at " + use.getRowIndex() + " " + use.getColumnIndex());
+        			type = b.spaceType(rIndexUse, cIndexUse);
+        			use.playChutesOrLadder(type);
         		}
+        		
+//        		System.out.println(use.getName() + " is at " + use.getRowIndex() + " " + use.getColumnIndex());
         	}
         	
         	k++;
         }
         
-        
+       if (use.getWin()==true) {
+    	   System.out.println("Congratulations, " + use.getName() + " has won!");
+       }else {
+    	   System.out.println("Oh no, " + comp.getName() + " has won. Better luck next time.");
+       }
+       
     }
 }

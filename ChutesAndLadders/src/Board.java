@@ -75,12 +75,12 @@ class Board {
     //Annika made method to test if board is correct by printing board 
     public void testPrints() {
         //Note: I just made these little astricts as placeholders
-        for (int a = 0; a < 10; a++) {
-            for (int b = 0; b < 10; b++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
+//        for (int a = 0; a < 10; a++) {
+//            for (int b = 0; b < 10; b++) {
+//                System.out.print("*");
+//            }
+//            System.out.println();
+//        }
         
         //testing for chutes and ladder spaces
         for (int i=0; i<board.length; i++) {
