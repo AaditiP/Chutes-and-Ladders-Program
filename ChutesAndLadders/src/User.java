@@ -44,6 +44,8 @@ public class User  implements Player {
 	//play turns
 	public void turn() {
 		int moveNum = (int)(Math.random()*6) + 1;
+		
+		System.out.println();
 		System.out.println("Dice rolled: " + moveNum);
 		
 		boolean isEven = this.isEven(rowIndex);
@@ -53,7 +55,9 @@ public class User  implements Player {
 		if (!isEven) {
 			if (moveNum + colIndex > 9) {
 				rowIndex = rowIndex-1;
-				colIndex = 9;
+				colIndex = 9-(moveNum - (9-colIndex))+1;
+				//TODO: do ^this to else 
+//				colIndex = (9-colIndex) - (moveNum - 1);
 			}else {
 				colIndex = colIndex + moveNum;
 			}
@@ -61,10 +65,14 @@ public class User  implements Player {
 		}else {
 			if (colIndex - moveNum < 0) {
 				rowIndex = rowIndex-1;
-				colIndex = 0;
+				colIndex = (moveNum-colIndex)-1;
 			}else {
 				colIndex = colIndex - moveNum;
 			}
+		}
+		
+		if ((rowIndex==0 && colIndex==0) || rowIndex<0){
+			win=true;
 		}
 		
 		
@@ -100,8 +108,14 @@ public class User  implements Player {
 	public void playChutesOrLadder(int type) {
 		if (type==2) {
 			this.chutes();
+			System.out.println(name + " is at " + rowIndex + " " + colIndex);
 		}else if (type==1) {
 			this.ladders();
+			System.out.println(name + " is at " + rowIndex + " " + colIndex);
+		}
+		
+		if ((rowIndex==0 && colIndex==0) || rowIndex<0) {
+			win=true;
 		}
 	}
 	
@@ -123,7 +137,7 @@ public class User  implements Player {
 			rowIndex = rowIndex + 1;
 			numSpaces=1;
 		}
-		System.out.println("Oh no, " + name + " hit a chute. They went " + numSpaces + " back. ");
+		System.out.println("Oh no, " + name + " hit a chute. They went " + numSpaces + " rows back. ");
 	}
 	
 	//changes rowIndex and colIndex if chute is hit
@@ -135,7 +149,7 @@ public class User  implements Player {
 			rowIndex = rowIndex - 1;
 			numSpaces=1;
 		}
-		System.out.println("Yay, " + name + " hit a chute. They went " + numSpaces + " forward. ");
+		System.out.println("Yay, " + name + " hit a ladder. They went " + numSpaces + " rows forward. ");
 	}
 	
 	//return row
@@ -151,4 +165,10 @@ public class User  implements Player {
 	public boolean getWin() {
 		return win;
 	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	
 }
