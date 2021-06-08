@@ -1,45 +1,19 @@
 
-public class User  implements Player {
+public class User {
 	
 	//instance variables
 	private String name;
 	private int rowIndex=9;
 	private int colIndex=0;
-//	private Space[][] boardArr;
 	int numSpaces=0;
 	boolean win=false;
 	Board b = new Board();
-	//Note to Annika: null pointer exception because array gets set to null here instead of Space objects 
 	
 	//constructor
 	public User (String n) {
-//		board = super.getBoard();
-//		this.setBoard();
 		name = n;
 	}
 	
-//	//return board
-//	public Space[][] getBoard() {
-//		return board;
-//	}
-	
-//	public void setBoard() {
-//		
-//		for (int i=0; i<10; i++) {
-//			
-//			for (int j=0; i<10; j++) {
-////				Space spa = new Space(0);
-//				if(super.getValue(i, j)==2) {
-//					boardArr[i][j] = new Space(2);
-//				}else if(super.getValue(i, j)==1) {
-//					boardArr[i][j] = new Space(1);
-//				}else {
-//					boardArr[i][j] = new Space(0);
-//				}
-//			}
-//			
-//		}
-//	}
 	
 	//play turns
 	public void turn() {
@@ -56,8 +30,7 @@ public class User  implements Player {
 			if (moveNum + colIndex > 9) {
 				rowIndex = rowIndex-1;
 				colIndex = 9-(moveNum - (9-colIndex))+1;
-				//TODO: do ^this to else 
-//				colIndex = (9-colIndex) - (moveNum - 1);
+				
 			}else {
 				colIndex = colIndex + moveNum;
 			}
@@ -75,36 +48,9 @@ public class User  implements Player {
 			win=true;
 		}
 		
-		
-		//test for chutes and ladders and winner
-//		if (colIndex != 0 && rowIndex !=0) {
-//			//Note: tried to change this if statement to use getValue method 
-////			if (board[rowIndex][colIndex].isChute()) {
-////				//go back
-////				this.chutes();
-////			
-////			}else if (board[rowIndex][colIndex].isLadder()) {
-////				//go forward
-////				this.ladders();
-////			}
-//			
-//			if (b.getValue(rowIndex, colIndex)==2) {
-//				//go back
-//				this.chutes();
-//			
-//			}else if (b.getValue(rowIndex, colIndex)==1) {
-//				//go forward
-//				this.ladders();
-//			}
-//			
-//			System.out.println(name + " is now at " + rowIndex + " " + colIndex);
-//		}else {
-//			System.out.println(name + " has won.");
-//			win=true;
-//		}
-		
 	}
 	
+	//call chutes or ladder method if type=2 or type=1 respectively
 	public void playChutesOrLadder(int type) {
 		if (type==2) {
 			this.chutes();
@@ -140,7 +86,7 @@ public class User  implements Player {
 		System.out.println("Oh no, " + name + " hit a chute. They went " + numSpaces + " rows back. ");
 	}
 	
-	//changes rowIndex and colIndex if chute is hit
+	//changes rowIndex and colIndex if ladder is hit
 	public void ladders() {
 		if (rowIndex>=4) {
 			rowIndex = rowIndex - 4;
@@ -162,11 +108,12 @@ public class User  implements Player {
 		return colIndex;
 	}
 	
+	//returns boolean win to represent if User has won
 	public boolean getWin() {
 		return win;
 	}
 	
-	
+	//return name 
 	public String getName() {
 		return name;
 	}

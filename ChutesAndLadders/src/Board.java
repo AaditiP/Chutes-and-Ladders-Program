@@ -7,8 +7,6 @@ class Board {
     void origBoard() {
         for (int a = 0; a < board.length; a++) {
             for (int b = 0; b < board[a].length; b++) {
-//                Space normal = new Space(0);
-//                board[a][b] = normal;
             	board[a][b] = new Space(0);
             }
         }
@@ -30,7 +28,8 @@ class Board {
             System.out.println("You have rolled " + userTurn);
             System.out.println("Randy Melvin Bartholomew the Third rolled " + compTurn);
         }
-        //Annika changed this to return int so main knows who goes first
+        
+        //returns int representing who goes first
         if (userTurn > compTurn) {
             System.out.println("You get the first roll!");
             return 1;
@@ -43,13 +42,12 @@ class Board {
 
     // 1 = ladder, 2 = chutes, anything else = normal
     void spaceSet() {
-    	//Idea for later: change Math.random() parameters to avoid if statements
         //Sets ladders
         for (int x = 0; x < 5; x++) {
             int xCoord = (int)(Math.random() * 10);
             int yCoord = (int)(Math.random() * 10);
-//            Space ladder = new Space(1);
-            //Annika added this to avoid ladders in top row
+          
+            //to avoid ladders in top row
             if (xCoord !=0) {
             	board[xCoord][yCoord] = new Space(1);
             }
@@ -62,9 +60,8 @@ class Board {
                 y = y;
             }
             else {
-            	//Annika added this to avoid chutes in last row
+            	//avoid chutes in last row
             	if (xCoord!=9) {
-//            		Space chute = new Space(2);
             		board[xCoord][yCoord] = new Space(2);
             	}
                 y++;
@@ -72,15 +69,8 @@ class Board {
         }
     }
     
-    //Annika made method to test if board is correct by printing board 
+    //print board
     public void testPrints() {
-        //Note: I just made these little astricts as placeholders
-//        for (int a = 0; a < 10; a++) {
-//            for (int b = 0; b < 10; b++) {
-//                System.out.print("*");
-//            }
-//            System.out.println();
-//        }
         
         //testing for chutes and ladder spaces
         for (int i=0; i<board.length; i++) {
@@ -104,12 +94,8 @@ class Board {
         return board;
     }
     
-    /*Note: tried to add this to avoid null pointer exception*/
-    //returns Space at give indexes
-//    public Space getValue(int row, int col) {
-//    	return board[row][col];
-//    }
-    
+
+    //returns int representing if space is chute, ladder, or nothing 
     public int getValue(int row, int col) {
     	if (board[row][col].isChute()) {
     		return 2;
