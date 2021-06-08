@@ -3,8 +3,7 @@ public class Space {
 	public boolean isChute, isLadder, isNormal;
 	public int type;
 	
-	//constructors
-	
+	//constructor
 	public Space(int type) {
 		if (type==1) {
 			isNormal=false;
@@ -42,8 +41,9 @@ public class Space {
 		}
     }
     
-   public int getType() {
+	//return int representing if the space has a chute, ladder, or nothing
+	public int getType() {
 	   return type;
-   }
+	}
 	
 }

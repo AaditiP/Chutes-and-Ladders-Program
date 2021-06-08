@@ -2,57 +2,41 @@
 public class Computer extends User{
 	
 	//instance variables
-	private String name="Randy Melvin Bartholomew the Third";
-//	private int rowIndex=9;
-//	private int colIndex=0;
-//	private Space[][] board;
-//	boolean win=false;
+	private String name="Randy Melvin Bartholomew III";
 	
 	//constructor
 	public Computer() {
-		super("Randy Melvin Bartholomew the Third");
+		super("Randy Melvin Bartholomew III");
 	}
 		
-	//methods
-	//Later problem: how to copy array in here 
-	public void setBoard() {
-//		board = super.setBoard();
-	}
-	
+
 	//play turns
 	public void turn() {
 		super.turn();
 	}
-	
-//	//returns whether or not player is in even row 
-//	public boolean isEven() {
-//		return true;
-//		//^placeholder
-//	}
 		
-		
+	//return rowIndex	
 	public int getRowIndex() {
 		return super.getRowIndex();
-//		return rowIndex;
 	}
 		
-		
+	//return colIndex	
 	public int getColumnIndex() {
 		return super.getColumnIndex();
-//		return colIndex;
 	}
 	
+	//return name
 	public String getName() {
 		return name;
 	}
 	
+	//return whether or not Computer has won
 	public boolean getWin() {
 		if ((super.getRowIndex()==0 && super.getColumnIndex()==0)|| super.getRowIndex()<0) {
 			return true;
 		}else {
 			return false;
 		}
-	
 	}
 
 }
