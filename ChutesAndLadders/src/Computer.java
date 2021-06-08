@@ -2,11 +2,11 @@
 public class Computer extends User{
 	
 	//instance variables
-	private String name="Randy Melvin Bartholomew the Third";
+	private String name="Randy Melvin Bartholomew III";
 	
 	//constructor
 	public Computer() {
-		super("Randy Melvin Bartholomew the Third");
+		super("Randy Melvin Bartholomew III");
 	}
 		
 

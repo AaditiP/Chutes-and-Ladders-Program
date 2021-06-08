@@ -10,7 +10,7 @@ class Main{
 
         //user interface
         System.out.println("Hello and welcome to Chutes and Ladders. "
-        		+ "\nYou will be playing against the computer, named Randy Melvin Bartholomew the Third.");
+        		+ "\nYou will be playing against the computer, named Randy Melvin Bartholomew III.");
         System.out.println();
         
         System.out.println("Rules: "
