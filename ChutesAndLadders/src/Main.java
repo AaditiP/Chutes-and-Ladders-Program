@@ -14,12 +14,15 @@ class Main{
         System.out.println();
         
         System.out.println("Rules: "
-        		+ "\n1. There is a 10x10 square game board and 2 players. "
-        		+ "\n2. Each player rolls a dice which determines how many spaces forward they will move. "
-        		+ "\n3. If a player lands on a square with a ladder, they move up to the specified square on the board. "
+        		+ "\n1. There is a 10x10 square game board and 2 players. Each player starts at index [9][0]. "
+        		+ "\n2. Play will go across the row to the right, up to the next column, across the row to left, and repeats. "
+        		+ "\n   The goal is to reach index [0][0] or go past it. "
+        		+ "\n3. Each player rolls a dice which determines how many spaces forward they will move. "
+        		+ "\n4. If a player lands on a square with a ladder, they move up to the specified square on the board. "
         		+ "\n   If a player lands on a square with a chute, they move down to the specified square on the board. "
-        		+ "\n4. Play continues until one player reaches the uppermost right or left square.");
+        		+ "\n5. Play continues until one player reaches the uppermost right or left square.");
        
+        System.out.println();
         System.out.println();
         
         //set board
