@@ -23,7 +23,7 @@ class Main{
         		+ "\n5. Play continues until one player reaches the uppermost right or left square.");
        
         System.out.println();
-        System.out.println();
+    
         
         //set board
         b.origBoard();
