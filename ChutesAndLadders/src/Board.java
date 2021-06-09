@@ -7,6 +7,8 @@ class Board {
     void origBoard() {
         for (int a = 0; a < board.length; a++) {
             for (int b = 0; b < board[a].length; b++) {
+//                Space normal = new Space(0);
+//                board[a][b] = normal;
             	board[a][b] = new Space(0);
             }
         }
@@ -28,8 +30,7 @@ class Board {
             System.out.println("You have rolled " + userTurn);
             System.out.println("Randy Melvin Bartholomew the Third rolled " + compTurn);
         }
-        
-        //returns int representing who goes first
+        //Annika changed this to return int so main knows who goes first
         if (userTurn > compTurn) {
             System.out.println("You get the first roll!");
             return 1;
@@ -42,12 +43,13 @@ class Board {
 
     // 1 = ladder, 2 = chutes, anything else = normal
     void spaceSet() {
+    	//Idea for later: change Math.random() parameters to avoid if statements
         //Sets ladders
         for (int x = 0; x < 5; x++) {
             int xCoord = (int)(Math.random() * 10);
             int yCoord = (int)(Math.random() * 10);
-          
-            //to avoid ladders in top row
+//            Space ladder = new Space(1);
+            //Annika added this to avoid ladders in top row
             if (xCoord !=0) {
             	board[xCoord][yCoord] = new Space(1);
             }
@@ -60,8 +62,9 @@ class Board {
                 y = y;
             }
             else {
-            	//avoid chutes in last row
+            	//Annika added this to avoid chutes in last row
             	if (xCoord!=9) {
+//            		Space chute = new Space(2);
             		board[xCoord][yCoord] = new Space(2);
             	}
                 y++;
@@ -69,15 +72,29 @@ class Board {
         }
     }
     
-    //print board
-    public void testPrints() {
+    //Annika made method to test if board is correct by printing board 
+    public void testPrints(int rowInd, int colInd, int compOrUser) {
+        //Note: I just made these little astricts as placeholders
+//        for (int a = 0; a < 10; a++) {
+//            for (int b = 0; b < 10; b++) {
+//                System.out.print("*");
+//            }
+//            System.out.println();
+//        }
         
         //testing for chutes and ladder spaces
         for (int i=0; i<board.length; i++) {
         	
         	for (int j=0; j<board.length; j++) {
-        		
-        		if (board[i][j].isChute() == true) {
+            if (board[i][j] == board[rowInd][colInd]) {
+              if (compOrUser == 2) {
+                System.out.print("# "); // false case doesn't work for some reason
+              }
+              else if (compOrUser == 1) {
+                System.out.print("U ");
+              }
+            }
+        		else if (board[i][j].isChute() == true) {
         			System.out.print("C ");
         		}else if (board[i][j].isLadder() == true) {
         			System.out.print("L ");
@@ -87,6 +104,7 @@ class Board {
         	}
         	System.out.println();
         }
+        
     }
 
     //Returns board array
@@ -94,8 +112,12 @@ class Board {
         return board;
     }
     
-
-    //returns int representing if space is chute, ladder, or nothing 
+    /*Note: tried to add this to avoid null pointer exception*/
+    //returns Space at give indexes
+//    public Space getValue(int row, int col) {
+//    	return board[row][col];
+//    }
+    
     public int getValue(int row, int col) {
     	if (board[row][col].isChute()) {
     		return 2;
