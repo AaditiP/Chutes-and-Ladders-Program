@@ -15,7 +15,7 @@ class Main{
         
         System.out.println("Rules: "
         		+ "\n1. There is a 10x10 square game board and 2 players. Each player starts at index [9][0]. "
-        		+ "\n2. Play will go across the row to the right, up to the next column, across the row to left, and repeats. "
+        		+ "\n2. Play will go across the row to the right, up to the next row, across the row to left, and repeats. "
         		+ "\n   The goal is to reach index [0][0] or go past it. "
         		+ "\n3. Each player rolls a dice which determines how many spaces forward they will move. "
         		+ "\n4. If a player lands on a square with a ladder, they move up to the specified square on the board. "
