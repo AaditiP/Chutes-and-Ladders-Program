@@ -71,7 +71,7 @@ class Main{
         		}
         		
         		
-        	//user goes	
+        	//user turn	
         	}else {
         		use.turn();
         		
