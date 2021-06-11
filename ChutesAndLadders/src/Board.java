@@ -70,14 +70,21 @@ class Board {
     }
     
     //print board
-    public void testPrints() {
+    public void testPrints(int rowInd, int colInd, int compOrUser) {
         
         //testing for chutes and ladder spaces
         for (int i=0; i<board.length; i++) {
         	
         	for (int j=0; j<board.length; j++) {
-        		
-        		if (board[i][j].isChute() == true) {
+            if (board[i][j] == board[rowInd][colInd]) {
+              if (compOrUser == 2) {
+                System.out.print("# ");
+              }
+              else if (compOrUser == 1) {
+                System.out.print("U ");
+              }
+            }
+        		else if (board[i][j].isChute() == true) {
         			System.out.print("C ");
         		}else if (board[i][j].isLadder() == true) {
         			System.out.print("L ");
