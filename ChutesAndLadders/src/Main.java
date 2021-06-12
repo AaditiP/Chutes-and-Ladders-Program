@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.Scanner;
 
 class Main{
@@ -7,7 +6,7 @@ class Main{
 		Scanner scn = new Scanner(System.in);
 		String name;
 		int goesFirst, rIndexUse, cIndexUse, rIndexComp, cIndexComp, type;
-    int compOrUser = 1; //1 = user, 2 = computer
+		int compOrUser = 1; //1 = user, 2 = computer
 
         //user interface
         System.out.println("Hello and welcome to Chutes and Ladders. "
@@ -78,41 +77,43 @@ class Main{
         		b.testPrints(comp.getRowIndex(), comp.getColumnIndex(), compOrUser);
         		
         	//user turn	
-        	}else {
+        	}else { 
         		//asks user to roll dice
-            System.out.print("Solve a simple arithmetic problem to roll the dice: ");
-
-            //user solves arithmetic problem to roll dice
-            int oper = (int)(Math.random() * 4) + 1;
-            int firstNum, secNum, ans;
-            firstNum = (int)(Math.random() * 1000) + 1;
-            secNum = (int)(Math.random() * 1000) + 1;
-
-            if (oper == 1) {
-              ans = firstNum + secNum; 
-              System.out.print("What is " + firstNum + " + " + secNum + "? ");
-            }
-            else if (oper == 2) {
-              ans = firstNum - secNum; 
-              System.out.print("What is " + firstNum + " - " + secNum + "? ");
-            }
-            else if (oper == 3) {
-              ans = firstNum * secNum; 
-              System.out.print("What is " + firstNum + " * " + secNum + "? " );
-            }
-            else {
-              ans = firstNum / secNum;
-              System.out.print("What is " + firstNum + " / " + secNum + " rounded down to the nearest integer? ");
-            }
-
-            //dice is rolled if answer is correct
-            int rollDie = scn.nextInt();
-            while (rollDie != ans) {
-              System.out.print("That's incorrect, please try again: ");
-              rollDie = scn.nextInt();
-            }
+        		System.out.println();
+	            System.out.print("Solve a simple arithmetic problem to roll the dice: ");
+	
+	            //user solves arithmetic problem to roll dice
+	            int oper = (int)(Math.random() * 4) + 1;
+	            int firstNum, secNum, ans;
+	            firstNum = (int)(Math.random() * 1000) + 1;
+	            secNum = (int)(Math.random() * 1000) + 1;
+	
+	            if (oper == 1) {
+	              ans = firstNum + secNum; 
+	              System.out.print("What is " + firstNum + " + " + secNum + "? ");
+	            }
+	            else if (oper == 2) {
+	              ans = firstNum - secNum; 
+	              System.out.print("What is " + firstNum + " - " + secNum + "? ");
+	            }
+	            else if (oper == 3) {
+	              ans = firstNum * secNum; 
+	              System.out.print("What is " + firstNum + " * " + secNum + "? " );
+	            }
+	            else {
+	              ans = firstNum / secNum;
+	              System.out.print("What is " + firstNum + " / " + secNum + " rounded down to the nearest integer? ");
+	            }
+	
+	            //dice is rolled if answer is correct
+	            int rollDie = scn.nextInt();
+	            while (rollDie != ans) {
+	              System.out.print("That's incorrect, please try again: ");
+	              rollDie = scn.nextInt();
+	            }
+        		System.out.println("Correct, nice job!");
         		
-            //user rolls
+        		//user rolls
         		use.turn();
         		
         		rIndexUse = use.getRowIndex();
