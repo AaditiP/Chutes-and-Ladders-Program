@@ -18,7 +18,7 @@ class Board {
         int compTurn = (int)(Math.random() * 6) + 1;
         
         System.out.println("You have rolled " + userTurn);
-        System.out.println("Randy Melvin Bartholomew the Third rolled " + compTurn);
+        System.out.println("Randy Melvin Bartholomew III rolled " + compTurn);
         
         //Rerolls if same number
         while(userTurn == compTurn) {
@@ -26,7 +26,7 @@ class Board {
             userTurn = (int)(Math.random() * 6) + 1;
             compTurn = (int)(Math.random() * 6) + 1;
             System.out.println("You have rolled " + userTurn);
-            System.out.println("Randy Melvin Bartholomew the Third rolled " + compTurn);
+            System.out.println("Randy Melvin Bartholomew III rolled " + compTurn);
         }
         
         //returns int representing who goes first
@@ -48,7 +48,7 @@ class Board {
             int yCoord = (int)(Math.random() * 10);
           
             //to avoid ladders in top row
-            if (xCoord !=0) {
+            if (xCoord !=0 && (xCoord!=9 && yCoord!=0)) {
             	board[xCoord][yCoord] = new Space(1);
             }
         }
@@ -70,32 +70,68 @@ class Board {
     }
     
     //print board
-    public void testPrints(int rowInd, int colInd, int compOrUser) {
-        
-        //testing for chutes and ladder spaces
-        for (int i=0; i<board.length; i++) {
-        	
-        	for (int j=0; j<board.length; j++) {
-            if (board[i][j] == board[rowInd][colInd]) {
-              if (compOrUser == 2) {
-                System.out.print("# ");
-              }
-              else if (compOrUser == 1) {
-                System.out.print("U ");
-              }
-            }
-        		else if (board[i][j].isChute() == true) {
-        			System.out.print("C ");
-        		}else if (board[i][j].isLadder() == true) {
-        			System.out.print("L ");
-        		}else {
-        			System.out.print("* ");
-        		}
-        	}
-        	System.out.println();
-        }
-    }
 
+   
+
+    public void testPrints(int rowInd, int colInd, int compOrUser) {
+    	//before rolls start
+    	if (compOrUser==0) {
+    		for (int i=0; i<board.length; i++) {
+    			
+    			for (int j=0; j<board.length; j++) {
+    				if (i==9 && j==0) {
+    					System.out.print("@ ");
+    				}else {
+    				
+	    				if (board[i][j].isChute() == true) {
+	            			System.out.print("C ");
+	            		}else if (board[i][j].isLadder() == true) {
+	            			System.out.print("L ");
+	            		}else {
+	            			System.out.print("* ");
+	            		}
+    				
+    				}
+    			}//end of inner for
+    			System.out.println();
+    		}	
+    	}else {
+        
+	        //testing for chutes and ladder spaces
+	        for (int i=0; i<board.length; i++) {
+	        	
+	        	for (int j=0; j<board.length; j++) {
+//	
+//	        		if (board[i][j].isChute() == true) {
+	        			if (board[i][j] == board[rowInd][colInd]) {
+	        				if (compOrUser == 2) {
+	        					System.out.print("# ");
+	        				}else if (compOrUser == 1) {
+	        					System.out.print("% ");
+	        				}
+	        				
+	        			}else if (board[i][j].isChute() == true) {
+	        				System.out.print("C ");
+	        				
+	        			}else if (board[i][j].isLadder() == true) {
+	        				System.out.print("L ");
+	        				
+	        			}else {
+	        				System.out.print("* ");
+	        			}
+	        			
+//	        		}//end of if board[i][j]
+	        	
+	        	}//end of inner for
+	        	System.out.println();
+	        	
+	        	
+	        }//end of outer for
+	        
+    	}
+    }
+    
+    
     //Returns board array
     public Space[][] getBoard() {
         return board;
