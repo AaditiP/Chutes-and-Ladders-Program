@@ -7,6 +7,7 @@ class Main{
 		Scanner scn = new Scanner(System.in);
 		String name;
 		int goesFirst, rIndexUse, cIndexUse, rIndexComp, cIndexComp, type;
+    int compOrUser = 1; //1 = user, 2 = computer
 
         //user interface
         System.out.println("Hello and welcome to Chutes and Ladders. "
@@ -39,20 +40,26 @@ class Main{
         
         
         //goes first
-        System.out.println("Now let's see who goes first. A dice will be rollled for you and the computer.");
+        System.out.println("Now let's see who goes first. A dice will be rolled for you and the computer.");
         
         goesFirst = b.goesFirst();
         System.out.println();
         
         
-        //test if board is what we expect
-        b.testPrints();
+        //prints starting boards for each player
+        System.out.print("The user's board is: ");
+        b.testPrints(9, 0, compOrUser);
+        System.out.println("The computer's board is: ");
+        compOrUser = 2;
+        b.testPrints(9, 0, compOrUser);
         
         //play turns 
         int k=goesFirst;
+
         
         while (use.getWin()==false && comp.getWin()==false){
         	
+        
         	//computer goes 
         	if (k%2==0) {
         		comp.turn();
@@ -60,19 +67,28 @@ class Main{
         		rIndexComp = comp.getRowIndex();
         		cIndexComp = comp.getColumnIndex();
         		
-        	
+
         		
         		if ((rIndexComp==0 && cIndexComp==0) || rIndexComp<0) {
         			continue;
         		}else {
+              compOrUser = 2;
         			System.out.println(comp.getName() + " is at " + comp.getRowIndex() + " " + comp.getColumnIndex());
         			type = b.spaceType(rIndexComp, cIndexComp);
         			comp.playChutesOrLadder(type);
+              b.testPrints(rIndexComp, cIndexComp, compOrUser);
         		}
         		
         		
         	//user turn	
         	}else {
+            //asks user to roll dice
+            System.out.print("Type 'roll' to roll the dice: ");
+            String rollDie = scn.nextLine();
+            while (!rollDie.equals("roll")) {
+              System.out.print("That's incorrect, please type 'roll' to roll the dice: ");
+              rollDie = scn.nextLine();
+            }
         		use.turn();
         		
         		rIndexUse = use.getRowIndex();
@@ -81,9 +97,11 @@ class Main{
         		if ((rIndexUse==0 && cIndexUse==0) || rIndexUse<0){
         			continue;
         		}else {
+              compOrUser = 1;
         			System.out.println(use.getName() + " is at " + use.getRowIndex() + " " + use.getColumnIndex());
         			type = b.spaceType(rIndexUse, cIndexUse);
         			use.playChutesOrLadder(type);
+              b.testPrints(rIndexUse, cIndexUse, compOrUser);
         		}
         		
         	}
