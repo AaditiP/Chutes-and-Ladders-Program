@@ -7,7 +7,7 @@ class Main{
 		Scanner scn = new Scanner(System.in);
 		String name;
 		int goesFirst, rIndexUse, cIndexUse, rIndexComp, cIndexComp, type;
-    int compOrUser = 1; //1 = user, 2 = computer
+		int compOrUser = 1; //1 = user, 2 = computer
 
         //user interface
         System.out.println("Hello and welcome to Chutes and Ladders. "

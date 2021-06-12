@@ -101,8 +101,7 @@ class Board {
 	        for (int i=0; i<board.length; i++) {
 	        	
 	        	for (int j=0; j<board.length; j++) {
-//	
-//	        		if (board[i][j].isChute() == true) {
+
 	        			if (board[i][j] == board[rowInd][colInd]) {
 	        				if (compOrUser == 2) {
 	        					System.out.print("# ");
@@ -120,7 +119,7 @@ class Board {
 	        				System.out.print("* ");
 	        			}
 	        			
-//	        		}//end of if board[i][j]
+
 	        	
 	        	}//end of inner for
 	        	System.out.println();
