@@ -48,12 +48,6 @@ class Main{
         System.out.println();
         
         
-        //prints starting boards for each player
-//        System.out.print("The user's board is: ");
-//        b.testPrints(0, 9, compOrUser);
-//        System.out.println("The computer's board is: ");
-//        compOrUser = 2;
-//        b.testPrints(0, 9, compOrUser);
         System.out.println("The board looks like this, the @ represents where both players are currently: ");
         b.testPrints(0, 9, 0);	
         
@@ -86,14 +80,39 @@ class Main{
         	//user turn	
         	}else {
         		//asks user to roll dice
-        		System.out.println();
-        		System.out.println("Type 'roll' to roll the dice: ");
-        		String rollDie = scn.nextLine();
-        		while (!rollDie.equals("roll")) {
-        			System.out.print("That's incorrect, please type 'roll' to roll the dice: ");
-        			rollDie = scn.nextLine();
-        		}
+            System.out.print("Solve a simple arithmetic problem to roll the dice: ");
+
+            //user solves arithmetic problem to roll dice
+            int oper = (int)(Math.random() * 4) + 1;
+            int firstNum, secNum, ans;
+            firstNum = (int)(Math.random() * 1000) + 1;
+            secNum = (int)(Math.random() * 1000) + 1;
+
+            if (oper == 1) {
+              ans = firstNum + secNum; 
+              System.out.print("What is " + firstNum + " + " + secNum + "? ");
+            }
+            else if (oper == 2) {
+              ans = firstNum - secNum; 
+              System.out.print("What is " + firstNum + " - " + secNum + "? ");
+            }
+            else if (oper == 3) {
+              ans = firstNum * secNum; 
+              System.out.print("What is " + firstNum + " * " + secNum + "? " );
+            }
+            else {
+              ans = firstNum / secNum;
+              System.out.print("What is " + firstNum + " / " + secNum + " rounded down to the nearest integer? ");
+            }
+
+            //dice is rolled if answer is correct
+            int rollDie = scn.nextInt();
+            while (rollDie != ans) {
+              System.out.print("That's incorrect, please try again: ");
+              rollDie = scn.nextInt();
+            }
         		
+            //user rolls
         		use.turn();
         		
         		rIndexUse = use.getRowIndex();
