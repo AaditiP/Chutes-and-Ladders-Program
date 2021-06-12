@@ -1,4 +1,3 @@
-import java.lang.Math.*;
 class Board {
     //Creates array of spaces to move on
     public Space[][] board = new Space[10][10]; 
